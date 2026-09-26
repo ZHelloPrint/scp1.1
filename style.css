@@ -1,0 +1,1545 @@
+/* ============================================================
+   SCP: CONTAINMENT
+   style.css
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #07090c;
+    --panel: #10141a;
+    --panel-2: #161b22;
+    --panel-3: #1d232b;
+
+    --border: #303841;
+
+    --text: #e8edf2;
+    --muted: #8c98a5;
+
+    --accent: #d7dce2;
+    --accent-dark: #9fa8b2;
+
+    --danger: #e04b4b;
+    --warning: #d69b45;
+    --success: #55b982;
+
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.55);
+
+    --transition:
+        160ms cubic-bezier(.2,.8,.2,1);
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    background: var(--bg);
+    color: var(--text);
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+body {
+    user-select: none;
+}
+
+
+/* ============================================================
+   GAME CONTAINER
+   ============================================================ */
+
+#game-container {
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(60, 70, 80, .12),
+            transparent 45%
+        ),
+        #05070a;
+}
+
+#game-container canvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+}
+
+
+/* ============================================================
+   GLOBAL SCREENS
+   ============================================================ */
+
+.screen {
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(90, 105, 120, .10),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(4, 6, 9, .98),
+            rgba(10, 13, 17, .98)
+        );
+
+    z-index: 1000;
+}
+
+
+.screen.hidden {
+    display: none !important;
+}
+
+
+/* ============================================================
+   MENU CONTAINER
+   ============================================================ */
+
+.menu-panel {
+    width: min(720px, 94vw);
+
+    padding: 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(23, 28, 35, .98),
+            rgba(11, 14, 18, .98)
+        );
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        var(--shadow),
+        inset 0 1px 0 rgba(255,255,255,.035);
+
+    border-radius: 8px;
+}
+
+
+.menu-header {
+    margin-bottom: 34px;
+}
+
+
+.menu-classification {
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: var(--muted);
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+
+.menu-title {
+    font-size: clamp(36px, 6vw, 62px);
+
+    line-height: .95;
+
+    font-weight: 700;
+
+    letter-spacing: -2px;
+
+    color: #f0f2f4;
+}
+
+
+.menu-subtitle {
+    margin-top: 14px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    color: var(--muted);
+
+    max-width: 540px;
+}
+
+
+/* ============================================================
+   SCP LOGO
+   ============================================================ */
+
+.scp-symbol {
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 22px;
+
+    border: 2px solid #d9dee4;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    opacity: .9;
+}
+
+.scp-symbol::before,
+.scp-symbol::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #d9dee4;
+}
+
+.scp-symbol::before {
+    width: 2px;
+    height: 38px;
+}
+
+.scp-symbol::after {
+    width: 38px;
+    height: 2px;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.menu-buttons {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    width: 100%;
+}
+
+
+button {
+    appearance: none;
+
+    border: 1px solid var(--border);
+
+    outline: none;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            180deg,
+            #1a2027,
+            #13181e
+        );
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        box-shadow var(--transition);
+}
+
+
+.menu-button {
+    width: 100%;
+
+    min-height: 54px;
+
+    padding: 0 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    text-align: left;
+
+    border-radius: 5px;
+
+    font-size: 14px;
+
+    letter-spacing: .3px;
+}
+
+
+.menu-button::after {
+    content: "›";
+
+    color: #697580;
+
+    font-size: 20px;
+
+    transition:
+        transform var(--transition),
+        color var(--transition);
+}
+
+
+.menu-button:hover {
+    transform: translateX(4px);
+
+    background:
+        linear-gradient(
+            180deg,
+            #252c34,
+            #1b2128
+        );
+
+    border-color: #59636d;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.25);
+}
+
+
+.menu-button:hover::after {
+    transform: translateX(4px);
+
+    color: #e5e9ed;
+}
+
+
+.menu-button:active {
+    transform: translateX(2px) scale(.99);
+}
+
+
+.menu-button.danger {
+    border-color:
+        rgba(224,75,75,.3);
+}
+
+
+.menu-button.danger:hover {
+    background:
+        linear-gradient(
+            180deg,
+            #482123,
+            #30191b
+        );
+
+    border-color:
+        rgba(224,75,75,.65);
+}
+
+
+/* ============================================================
+   ROLE CARDS
+   ============================================================ */
+
+.role-grid,
+.scp-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+
+.role-card,
+.scp-card {
+    min-height: 170px;
+
+    padding: 20px;
+
+    border-radius: 6px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1a2027,
+            #11151a
+        );
+
+    border: 1px solid var(--border);
+
+    text-align: left;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.role-card::before,
+.scp-card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 100%;
+
+    background: #717b85;
+
+    transform:
+        scaleY(0);
+
+    transform-origin:
+        bottom;
+
+    transition:
+        transform var(--transition);
+}
+
+
+.role-card:hover,
+.scp-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #5c6670;
+
+    background:
+        linear-gradient(
+            145deg,
+            #222931,
+            #151a20
+        );
+}
+
+
+.role-card:hover::before,
+.scp-card:hover::before {
+    transform: scaleY(1);
+}
+
+
+.role-name,
+.scp-name {
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 10px;
+}
+
+
+.role-description,
+.scp-description {
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+
+.scp-number {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #737e89;
+
+    margin-bottom: 10px;
+}
+
+
+/* ============================================================
+   BACK BUTTON
+   ============================================================ */
+
+.back-button {
+    margin-top: 20px;
+
+    width: auto;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border-radius: 5px;
+
+    color: var(--muted);
+
+    background:
+        transparent;
+}
+
+
+.back-button:hover {
+    color: var(--text);
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+/* ============================================================
+   HUD
+   ============================================================ */
+
+#hud {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 500;
+
+    display: block;
+}
+
+
+.hud-top {
+    position: absolute;
+
+    top: 22px;
+    left: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.hud-location {
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: #c7ced5;
+
+    text-shadow:
+        0 2px 5px black;
+}
+
+
+.hud-security {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    color: var(--danger);
+
+    text-shadow:
+        0 2px 5px black;
+}
+
+
+/* ============================================================
+   OBJECTIVES
+   ============================================================ */
+
+#objectives {
+    position: absolute;
+
+    top: 82px;
+    left: 22px;
+
+    width: 310px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.objective {
+    padding: 8px 11px;
+
+    background:
+        rgba(5,7,10,.70);
+
+    border-left:
+        2px solid #69747f;
+
+    backdrop-filter:
+        blur(8px);
+
+    font-size: 11px;
+
+    color: #c5ccd3;
+
+    transition:
+        opacity .2s,
+        transform .2s;
+}
+
+
+.objective.complete {
+    color: #6ec693;
+
+    border-left-color:
+        var(--success);
+
+    opacity: .6;
+}
+
+
+/* ============================================================
+   PLAYER STATS
+   ============================================================ */
+
+.hud-bottom-left {
+    position: absolute;
+
+    left: 22px;
+    bottom: 22px;
+
+    width: 220px;
+}
+
+
+.stat {
+    margin-top: 8px;
+}
+
+
+.stat-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 4px;
+
+    font-size: 9px;
+
+    letter-spacing: 1.4px;
+
+    color: #aab2bb;
+}
+
+
+.stat-bar {
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255,255,255,.10);
+
+    overflow: hidden;
+}
+
+
+.stat-fill {
+    height: 100%;
+
+    width: 100%;
+
+    background: #d4d9de;
+
+    transition:
+        width .2s ease;
+}
+
+
+/* ============================================================
+   KEYCARD
+   ============================================================ */
+
+#keycard-display {
+    position: absolute;
+
+    right: 22px;
+    bottom: 22px;
+
+    padding: 10px 13px;
+
+    background:
+        rgba(7,9,12,.78);
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:
+        blur(10px);
+
+    min-width: 150px;
+}
+
+
+.keycard-label {
+    font-size: 8px;
+
+    color: #7e8994;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 4px;
+}
+
+
+#keycard-value {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+
+/* ============================================================
+   CENTER MESSAGE
+   ============================================================ */
+
+#message {
+    position: absolute;
+
+    left: 50%;
+    top: 78%;
+
+    transform:
+        translate(-50%, 12px);
+
+    opacity: 0;
+
+    padding: 10px 17px;
+
+    background:
+        rgba(5,7,10,.88);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    color: #e1e5e9;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+}
+
+
+#message.visible {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+}
+
+
+/* ============================================================
+   CROSSHAIR
+   ============================================================ */
+
+#crosshair {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 16px;
+    height: 16px;
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+#crosshair::before,
+#crosshair::after {
+    content: "";
+
+    position: absolute;
+
+    background:
+        rgba(235,240,245,.75);
+}
+
+
+#crosshair::before {
+    width: 1px;
+    height: 12px;
+
+    left: 7px;
+    top: 2px;
+}
+
+
+#crosshair::after {
+    height: 1px;
+    width: 12px;
+
+    left: 2px;
+    top: 7px;
+}
+
+
+/* ============================================================
+   MAP
+   ============================================================ */
+
+#map-panel {
+    position: fixed;
+
+    right: 25px;
+    top: 25px;
+
+    width: 390px;
+    height: 300px;
+
+    padding: 15px;
+
+    background:
+        rgba(8,11,15,.94);
+
+    border: 1px solid #39424c;
+
+    box-shadow:
+        var(--shadow);
+
+    backdrop-filter:
+        blur(15px);
+
+    z-index: 800;
+
+    opacity: 0;
+
+    transform:
+        translateY(-8px)
+        scale(.98);
+
+    pointer-events: none;
+
+    transition:
+        opacity .18s ease,
+        transform .18s ease;
+}
+
+
+#map-panel.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+.map-header {
+    height: 30px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-bottom:
+        1px solid #2b333c;
+
+    margin-bottom: 10px;
+}
+
+
+.map-title {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #d0d6dc;
+}
+
+
+.map-floor {
+    font-size: 9px;
+
+    color: #7f8a95;
+}
+
+
+#map {
+    position: relative;
+
+    width: 100%;
+    height: 240px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        20px 20px;
+}
+
+
+.map-room {
+    position: absolute;
+
+    width: 70px;
+    height: 30px;
+
+    transform:
+        translate(-50%, -50%);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 3px;
+
+    background:
+        #1d242b;
+
+    border:
+        1px solid #48535e;
+
+    color: #8d98a3;
+
+    font-size: 7px;
+
+    letter-spacing: .5px;
+}
+
+
+.map-player {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #f0f3f5;
+
+    box-shadow:
+        0 0 10px
+        rgba(255,255,255,.65);
+
+    transform:
+        translate(-50%, -50%);
+}
+
+
+/* ============================================================
+   PAUSE SCREEN
+   ============================================================ */
+
+#pause-menu {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1500;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(2,3,5,.76);
+
+    backdrop-filter:
+        blur(12px);
+}
+
+
+.pause-panel {
+    width: min(430px, 90vw);
+
+    padding: 32px;
+
+    background:
+        #101419;
+
+    border:
+        1px solid #343c45;
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+.pause-title {
+    font-size: 27px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.pause-subtitle {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    margin-bottom: 25px;
+}
+
+
+/* ============================================================
+   GAME OVER
+   ============================================================ */
+
+#game-over {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(65,15,15,.2),
+            rgba(0,0,0,.96)
+        );
+}
+
+
+.game-over-panel {
+    width: min(520px, 90vw);
+
+    padding: 40px;
+
+    text-align: center;
+
+    background:
+        rgba(10,12,16,.96);
+
+    border:
+        1px solid #472d30;
+
+    box-shadow:
+        var(--shadow);
+}
+
+
+.game-over-title {
+    font-size: 42px;
+
+    font-weight: 700;
+
+    letter-spacing: -1px;
+
+    color: #e3e5e7;
+
+    margin-bottom: 12px;
+}
+
+
+#game-over-reason {
+    font-size: 12px;
+
+    color: #a0a8b0;
+
+    margin-bottom: 28px;
+}
+
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+
+.settings-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+.setting {
+    display: grid;
+
+    grid-template-columns:
+        170px 1fr 55px;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.setting label {
+    font-size: 12px;
+
+    color: #bfc6cd;
+}
+
+
+.setting input[type="range"] {
+    width: 100%;
+
+    accent-color: #d7dce1;
+
+    cursor: pointer;
+}
+
+
+.setting-value {
+    text-align: right;
+
+    font-size: 10px;
+
+    color: #78848f;
+}
+
+
+/* ============================================================
+   CONTROLS
+   ============================================================ */
+
+.controls-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+
+    margin-bottom: 25px;
+}
+
+
+.control {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 11px 13px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid #252d35;
+}
+
+
+.control-name {
+    font-size: 11px;
+
+    color: #9da7b1;
+}
+
+
+.key {
+    min-width: 48px;
+
+    padding: 5px 8px;
+
+    text-align: center;
+
+    background:
+        #252b32;
+
+    border:
+        1px solid #424b55;
+
+    border-radius: 3px;
+
+    color: #dce1e5;
+
+    font-size: 9px;
+
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   TOP STATUS
+   ============================================================ */
+
+#facility-status {
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+
+    gap: 8px;
+}
+
+
+.status-chip {
+    padding: 7px 10px;
+
+    background:
+        rgba(7,9,12,.75);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    color: #8c97a2;
+
+    backdrop-filter:
+        blur(8px);
+}
+
+
+#security-status {
+    color: #d96464;
+}
+
+
+#power-value {
+    color: #aeb7bf;
+}
+
+
+/* ============================================================
+   ROLE / SCP COLORS
+   ============================================================ */
+
+.role-card[data-role="GUARD"] {
+    border-top:
+        2px solid #66717c;
+}
+
+
+.role-card[data-role="D-CLASS"] {
+    border-top:
+        2px solid #bd713e;
+}
+
+
+.role-card[data-role="SCP"] {
+    border-top:
+        2px solid #805d63;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #090b0e;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #333b44;
+
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4b5661;
+}
+
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.hidden {
+    display: none !important;
+}
+
+
+.no-pointer {
+    pointer-events: none;
+}
+
+
+.text-muted {
+    color: var(--muted);
+}
+
+
+.text-danger {
+    color: var(--danger);
+}
+
+
+.text-success {
+    color: var(--success);
+}
+
+
+/* ============================================================
+   CRT / FACILITY EFFECT
+   ============================================================ */
+
+.facility-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 450;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            rgba(255,255,255,.012) 50%,
+            transparent 50%
+        );
+
+    background-size:
+        100% 4px;
+
+    opacity: .16;
+
+    mix-blend-mode: overlay;
+}
+
+
+.vignette {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 449;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(0,0,0,.48) 100%
+        );
+}
+
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: .55;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes flicker {
+    0% {
+        opacity: 1;
+    }
+
+    3% {
+        opacity: .75;
+    }
+
+    6% {
+        opacity: 1;
+    }
+
+    8% {
+        opacity: .85;
+    }
+
+    12% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform:
+            translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+    }
+}
+
+
+.menu-panel {
+    animation:
+        fadeIn .35s ease-out;
+}
+
+
+#security-status {
+    animation:
+        pulse 2.5s infinite;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .menu-panel {
+        padding: 25px;
+    }
+
+    .role-grid,
+    .scp-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .role-card,
+    .scp-card {
+        min-height: 120px;
+    }
+
+    #objectives {
+        width: 230px;
+    }
+
+    #map-panel {
+        left: 10px;
+        right: 10px;
+
+        top: 10px;
+
+        width: auto;
+    }
+
+    .setting {
+        grid-template-columns:
+            1fr;
+
+        gap: 7px;
+    }
+
+    .setting-value {
+        text-align: left;
+    }
+
+    .controls-grid {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+@media (max-height: 600px) {
+
+    .menu-panel {
+        max-height: 92vh;
+
+        overflow-y: auto;
+
+        padding: 25px;
+    }
+
+    .menu-header {
+        margin-bottom: 20px;
+    }
+
+    .menu-title {
+        font-size: 36px;
+    }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+    }
+}
